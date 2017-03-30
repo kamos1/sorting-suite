@@ -1,14 +1,23 @@
 import { assert } from 'chai';
-import { insertionSort } from '../scripts/insertion'
+import { insertionSort } from '../scripts/insertionSort'
 import { generateNumbers } from '../helpers/generateNumbers'
+import { generateLetters } from '../helpers/generateLetters'
 import { compare } from '../helpers/compare'
 
 describe('test insertion sort', () => {
   let randomNumbers = generateNumbers(-5, 5000);
+  let randomLetters = generateLetters(5);
 
   it('should be an array', () => {
 
     assert.typeOf(randomNumbers, 'array');
+  })
+
+  it('should sort an array of numbers', () => {
+    var array = [5, 4, 3, 2, 1];
+    var array2 = [5, 4, 3, 2, 1];
+
+    assert.deepEqual(insertionSort(array), array2.sort(compare));
   })
 
   it('should sort an array of numbers', () => {
@@ -27,26 +36,13 @@ describe('test insertion sort', () => {
     assert.deepEqual(insertionSort(numbers), numbers.sort(compare));
   })
 
-  it('should sort an array of lowercase letters', () => {
-    let letters = ['b', 'r', 'q', 'z', 't', 'c'];
+  it('should sort an array of letters', () => {
 
-    assert.deepEqual(insertionSort(letters), letters.sort());
+    assert.deepEqual(insertionSort(randomLetters), randomLetters.sort());
   })
 
-  it('should sort an array of uppercase letters', () => {
-    let letters = ['B', 'R', 'Q', 'Z', 'T', 'C'];
-
-    assert.deepEqual(insertionSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase letters with duplicates', () => {
+  it('should sort an array of letters with duplicates', () => {
     let letters = ['b', 'r', 'b', 'c', 't', 'c'];
-
-    assert.deepEqual(insertionSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase and uppercase letters', () => {
-    let letters = ['b', 'r', 'B', 'W', 'C', 'c'];
 
     assert.deepEqual(insertionSort(letters), letters.sort());
   })

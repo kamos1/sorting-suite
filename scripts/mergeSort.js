@@ -20,7 +20,8 @@ export const merge = (left, right) => {
       result.push(right.shift());
     }
   }
-
+  
+  // use concat
   while (left.length) {
     result.push(left.shift());
   }
@@ -28,6 +29,6 @@ export const merge = (left, right) => {
   while (right.length) {
     result.push(right.shift());
   }
-  
+
   return result;
 }

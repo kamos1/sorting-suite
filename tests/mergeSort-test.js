@@ -1,10 +1,12 @@
 import { assert } from 'chai';
-import { mergeSort } from '../scripts/merge'
+import { mergeSort } from '../scripts/mergeSort'
 import { generateNumbers } from '../helpers/generateNumbers'
+import { generateLetters } from '../helpers/generateLetters'
 import { compare } from '../helpers/compare'
 
 describe('test merge sort', () => {
   let randomNumbers = generateNumbers(-5, 5000);
+  let randomLetters = generateLetters(5);
 
   it('should be an array', () => {
 
@@ -27,26 +29,13 @@ describe('test merge sort', () => {
     assert.deepEqual(mergeSort(numbers), numbers.sort(compare));
   })
 
-  it('should sort an array of lowercase letters', () => {
-    let letters = ['b', 'r', 'q', 'z', 't', 'c'];
+  it('should sort an array of letters', () => {
 
-    assert.deepEqual(mergeSort(letters), letters.sort());
+    assert.deepEqual(mergeSort(randomLetters), randomLetters.sort());
   })
 
-  it('should sort an array of uppercase letters', () => {
-    let letters = ['B', 'R', 'Q', 'Z', 'T', 'C'];
-
-    assert.deepEqual(mergeSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase letters', () => {
-    let letters = ['b', 'r', 'b', 'c', 't', 'c'];
-
-    assert.deepEqual(mergeSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase and uppercase letters', () => {
-    let letters = ['b', 'r', 'B', 'W', 'C', 'c'];
+  it('should sort an array of letters with duplicates', () => {
+    let letters = ['b', 'r', 'b', 'w', 'c', 'c'];
 
     assert.deepEqual(mergeSort(letters), letters.sort());
   })

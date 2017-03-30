@@ -1,10 +1,12 @@
 import { assert } from 'chai';
-import { bubbleSort } from '../scripts/bubble'
-import { generateNumbers } from '../helpers/generateNumbers'
-import { compare } from '../helpers/compare'
+import { bubbleSort } from '../scripts/bubbleSort';
+import { generateNumbers } from '../helpers/generateNumbers';
+import { generateLetters } from '../helpers/generateLetters';
+import { compare } from '../helpers/compare';
 
 describe('test bubble sort', () => {
   let randomNumbers = generateNumbers(-5, 5000);
+  let randomLetters = generateLetters(5);
 
   it('should be an array', () => {
 
@@ -27,26 +29,13 @@ describe('test bubble sort', () => {
     assert.deepEqual(bubbleSort(numbers), numbers.sort(compare));
   })
 
-  it('should sort an array of lowercase letters', () => {
-    let letters = ['b', 'r', 'q', 'z', 't', 'c'];
+  it('should sort an array of letters', () => {
 
-    assert.deepEqual(bubbleSort(letters), letters.sort());
+    assert.deepEqual(bubbleSort(randomLetters), randomLetters.sort());
   })
 
-  it('should sort an array of uppercase letters', () => {
-    let letters = ['B', 'R', 'A', 'Z', 'T', 'C'];
-
-    assert.deepEqual(bubbleSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase letters with duplicates', () => {
+  it('should sort an array of letters with duplicates', () => {
     let letters = ['b', 'r', 'b', 'c', 't', 'c'];
-
-    assert.deepEqual(bubbleSort(letters), letters.sort());
-  })
-
-  it('should sort an array of lowercase and uppercase letters', () => {
-    let letters = ['b', 'r', 'B', 'W', 'C', 'c'];
 
     assert.deepEqual(bubbleSort(letters), letters.sort());
   })
